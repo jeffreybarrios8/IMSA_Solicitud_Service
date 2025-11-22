@@ -1,0 +1,6 @@
+@IMSA_Solicitud_Service_HostAddress = http://localhost:5188
+
+GET {{IMSA_Solicitud_Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
