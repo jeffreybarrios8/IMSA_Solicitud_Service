@@ -1,3 +1,5 @@
+using IMSA_Solicitud_Service.Extensios;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.AddDependenciesConfiguration();
 
 var app = builder.Build();
 
