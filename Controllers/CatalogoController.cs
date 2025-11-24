@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IMSA_Solicitud_Service.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class CatalogoController : ControllerBase
     {
