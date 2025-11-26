@@ -3,6 +3,11 @@
     "Dependencies": [
       {
         "DependencyType": "Scoped",
+        "From": "Imsa.Solicitud.DataAccess.Interface.IConnectionManager, Imsa.Solicitud.DataAccess.Interface",
+        "To": "Imsa.Solicitud.DataAccess.ConnectionManager, Imsa.Solicitud.DataAccess"
+      },
+      {
+        "DependencyType": "Scoped",
         "From": "Imsa.Solicitud.BusinessLogic.Interface.ICliente, Imsa.Solicitud.BusinessLogic.Interface",
         "To": "Imsa.Solicitud.BusinessLogic.Cliente, Imsa.Solicitud.BusinessLogic"
       },
@@ -13,8 +18,13 @@
       },
       {
         "DependencyType": "Scoped",
-        "From": "Imsa.Solicitud.DataAccess.Interface.IConnectionManager, Imsa.Solicitud.DataAccess.Interface",
-        "To": "Imsa.Solicitud.DataAccess.ConnectionManager, Imsa.Solicitud.DataAccess"
+        "From": "Imsa.Solicitud.BusinessLogic.Interface.ISolicitud, Imsa.Solicitud.BusinessLogic.Interface",
+        "To": "Imsa.Solicitud.BusinessLogic.Solicitud, Imsa.Solicitud.BusinessLogic"
+      },
+      {
+        "DependencyType": "Scoped",
+        "From": "Imsa.Solicitud.DataAccess.Interface.ISolicitud, Imsa.Solicitud.DataAccess.Interface",
+        "To": "Imsa.Solicitud.DataAccess.Solicitud, Imsa.Solicitud.DataAccess"
       }
     ]
   }

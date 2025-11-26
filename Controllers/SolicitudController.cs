@@ -2,33 +2,30 @@
 using Imsa.Solicitud.Model;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace IMSA_Solicitud_Service.Controllers
 {
     [Route("api/[controller]/[Action]")]
     [ApiController]
-    public class CatalogoController : ControllerBase
+    public class SolicitudController : ControllerBase
     {
-
-        private readonly ICliente _clienteBusinessLogic;
-
-        public CatalogoController(ICliente clienteBusinessLogic)
+        private readonly ISolicitud _solicitudBusinessLogic;
+        public SolicitudController(ISolicitud solicitudBusinessLogic)
         {
-            _clienteBusinessLogic = clienteBusinessLogic;
+            _solicitudBusinessLogic = solicitudBusinessLogic;
         }
 
-        [HttpGet]
-        public IActionResult Clientes()
+        [HttpPost]
+        public async Task<IActionResult> Guardar([FromBody] Solicitud sol)
         {
+
             try
             {
-                var clientes = _clienteBusinessLogic.obtenerClientes();
-                var result = new ApiResponse<IEnumerable<Cliente>>
+                var solicitud = await _solicitudBusinessLogic.GuardarSolicitud(sol);
+                var result = new ApiResponse<Solicitud>
                 {
                     Status = 0,
-                    Message = "Clientes obtenidos correctamente",
-                    Response = clientes
+                    Message = "Se guardó correctamente",
+                    Response = solicitud
                 };
 
                 return Ok(result);
@@ -39,12 +36,11 @@ namespace IMSA_Solicitud_Service.Controllers
                 {
                     Status = 1,
                     Message = "Error al obtener los clientes",
-                    Response = ex.Message  
+                    Response = ex.Message
                 };
 
                 return StatusCode(500, error);
             }
         }
-
     }
 }
