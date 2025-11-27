@@ -42,5 +42,60 @@ namespace IMSA_Solicitud_Service.Controllers
                 return StatusCode(500, error);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ObtenerFolio()
+        {
+
+            try
+            {
+                var folio = await _solicitudBusinessLogic.ObtenerFolio();
+                var result = new ApiResponse<string>
+                {
+                    Status = 0,
+                    Message = "Se obtuvo el número de folio correctamente",
+                    Response = folio
+                };
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al obtener el número de folio",
+                    Response = ex.Message
+                };
+
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GuardarDetalle([FromBody] DetalleSolicitud detalleSolicitud)
+        {
+            try
+            {
+                var detalle = await _solicitudBusinessLogic.GuardarDetalleSolicitud(detalleSolicitud);
+                var result = new ApiResponse<DetalleSolicitud>
+                {
+                    Status = 0,
+                    Message = "Se guardó el detalle de la solicitud correctamente",
+                    Response = detalle
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al guardar el detalle de la solicitud",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
     }
 }
