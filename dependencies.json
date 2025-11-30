@@ -25,6 +25,16 @@
         "DependencyType": "Scoped",
         "From": "Imsa.Solicitud.DataAccess.Interface.ISolicitud, Imsa.Solicitud.DataAccess.Interface",
         "To": "Imsa.Solicitud.DataAccess.Solicitud, Imsa.Solicitud.DataAccess"
+      },
+      {
+        "DependencyType": "Scoped",
+        "From": "Imsa.Solicitud.BusinessLogic.Interface.IProducto, Imsa.Solicitud.BusinessLogic.Interface",
+        "To": "Imsa.Solicitud.BusinessLogic.Producto, Imsa.Solicitud.BusinessLogic"
+      },
+      {
+        "DependencyType": "Scoped",
+        "From": "Imsa.Solicitud.DataAccess.Interface.IProducto, Imsa.Solicitud.DataAccess.Interface",
+        "To": "Imsa.Solicitud.DataAccess.Producto, Imsa.Solicitud.DataAccess"
       }
     ]
   }

@@ -12,10 +12,12 @@ namespace IMSA_Solicitud_Service.Controllers
     {
 
         private readonly ICliente _clienteBusinessLogic;
+        private readonly IProducto _productoBusinessLogic;
 
-        public CatalogoController(ICliente clienteBusinessLogic)
+        public CatalogoController(ICliente clienteBusinessLogic, IProducto productoBusinessLogic)
         {
             _clienteBusinessLogic = clienteBusinessLogic;
+            _productoBusinessLogic = productoBusinessLogic;
         }
 
         [HttpGet]
@@ -42,6 +44,32 @@ namespace IMSA_Solicitud_Service.Controllers
                     Response = ex.Message  
                 };
 
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Productos()
+        {
+            try
+            {
+                var productos = await _productoBusinessLogic.ObtenerProductos();
+                var result = new ApiResponse<IEnumerable<Producto>>
+                {
+                    Status = 0,
+                    Message = "Productos obtenidos correctamente",
+                    Response = productos
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al obtener los productos",
+                    Response = ex.Message
+                };
                 return StatusCode(500, error);
             }
         }

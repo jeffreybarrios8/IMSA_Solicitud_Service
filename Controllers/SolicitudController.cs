@@ -97,5 +97,34 @@ namespace IMSA_Solicitud_Service.Controllers
                 return StatusCode(500, error);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Solicitudes()
+        {
+            try
+            {
+                var solicitudes = await _solicitudBusinessLogic.ObtenerSolicitudes();
+                var result = new ApiResponse<IEnumerable<Solicitud>>
+                {
+                    Status = 0,
+                    Message = "Se obtuvieron las solicitudes correctamente",
+                    Response = solicitudes
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al obtener las solicitudes",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+
+        }
+
     }
+
 }
