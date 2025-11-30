@@ -125,6 +125,32 @@ namespace IMSA_Solicitud_Service.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GuardarOferta([FromBody] Oferta oferta)
+        {
+            try
+            {
+                var ofertaGuardada = await _solicitudBusinessLogic.GuardarOferta(oferta);
+                var result = new ApiResponse<Oferta>
+                {
+                    Status = 0,
+                    Message = "Se guardó la oferta correctamente",
+                    Response = ofertaGuardada
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al guardar la oferta",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
+
     }
 
 }
