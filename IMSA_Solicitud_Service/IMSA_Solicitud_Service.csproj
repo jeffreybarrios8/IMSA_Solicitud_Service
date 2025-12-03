@@ -13,11 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Imsa.Solicitud.BusinessLogic.Interface\Imsa.Solicitud.BusinessLogic.Interface.csproj" />
     <ProjectReference Include="..\Imsa.Solicitud.BusinessLogic\Imsa.Solicitud.BusinessLogic.csproj" />
-    <ProjectReference Include="..\Imsa.Solicitud.DataAccess.Interface\Imsa.Solicitud.DataAccess.Interface.csproj" />
-    <ProjectReference Include="..\Imsa.Solicitud.DataAccess\Imsa.Solicitud.DataAccess.csproj" />
     <ProjectReference Include="..\Imsa.Solicitud.Model\Imsa.Solicitud.Model.csproj" />
   </ItemGroup>
+
+
 
 </Project>

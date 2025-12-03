@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSA_Solicitud_Service", "IMSA_Solicitud_Service.csproj", "{30D115B6-4598-443C-8666-34E9376A32EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSA_Solicitud_Service", "IMSA_Solicitud_Service\IMSA_Solicitud_Service.csproj", "{30D115B6-4598-443C-8666-34E9376A32EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.BusinessLogic", "..\Imsa.Solicitud.BusinessLogic\Imsa.Solicitud.BusinessLogic.csproj", "{BABF6680-F278-4140-A0C5-7CDF5C084092}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.BusinessLogic", "Imsa.Solicitud.BusinessLogic\Imsa.Solicitud.BusinessLogic.csproj", "{BABF6680-F278-4140-A0C5-7CDF5C084092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.BusinessLogic.Interface", "..\Imsa.Solicitud.BusinessLogic.Interface\Imsa.Solicitud.BusinessLogic.Interface.csproj", "{D684726C-6B56-420E-B5A5-5D987BD01F14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.BusinessLogic.Interface", "Imsa.Solicitud.BusinessLogic.Interface\Imsa.Solicitud.BusinessLogic.Interface.csproj", "{D684726C-6B56-420E-B5A5-5D987BD01F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.DataAccess", "..\Imsa.Solicitud.DataAccess\Imsa.Solicitud.DataAccess.csproj", "{E2DCD718-F4D7-4D33-A8FF-4D21FDB21C2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.DataAccess", "Imsa.Solicitud.DataAccess\Imsa.Solicitud.DataAccess.csproj", "{E2DCD718-F4D7-4D33-A8FF-4D21FDB21C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.DataAccess.Interface", "..\Imsa.Solicitud.DataAccess.Interface\Imsa.Solicitud.DataAccess.Interface.csproj", "{F1425A54-37BF-4383-B056-48E824E42E9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.DataAccess.Interface", "Imsa.Solicitud.DataAccess.Interface\Imsa.Solicitud.DataAccess.Interface.csproj", "{F1425A54-37BF-4383-B056-48E824E42E9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.Model", "..\Imsa.Solicitud.Model\Imsa.Solicitud.Model.csproj", "{FC29286B-7422-487C-B9EB-BDA4DF3AFC65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imsa.Solicitud.Model", "Imsa.Solicitud.Model\Imsa.Solicitud.Model.csproj", "{FC29286B-7422-487C-B9EB-BDA4DF3AFC65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

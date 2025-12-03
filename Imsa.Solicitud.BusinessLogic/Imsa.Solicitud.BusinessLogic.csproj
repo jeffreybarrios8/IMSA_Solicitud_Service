@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Imsa.Solicitud.BusinessLogic.Interface\Imsa.Solicitud.BusinessLogic.Interface.csproj" />
+    <ProjectReference Include="..\Imsa.Solicitud.DataAccess\Imsa.Solicitud.DataAccess.csproj" />
+    <ProjectReference Include="..\Imsa.Solicitud.Model\Imsa.Solicitud.Model.csproj" />
+  </ItemGroup>
+
+</Project>
