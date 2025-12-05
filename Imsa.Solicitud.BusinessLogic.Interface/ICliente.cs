@@ -11,6 +11,8 @@ namespace Imsa.Solicitud.BusinessLogic.Interface
     {
 
         public IEnumerable<Model.Cliente> obtenerClientes();
+        Task<Model.Cliente> GuardarCliente(Model.Cliente cliente);
+
 
     }
 }

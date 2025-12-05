@@ -9,9 +9,11 @@ namespace IMSA_Solicitud_Service.Controllers
     public class SolicitudController : ControllerBase
     {
         private readonly ISolicitud _solicitudBusinessLogic;
-        public SolicitudController(ISolicitud solicitudBusinessLogic)
+        private readonly ICliente _clienteBusinessLogic;
+        public SolicitudController(ISolicitud solicitudBusinessLogic, ICliente cliente)
         {
             _solicitudBusinessLogic = solicitudBusinessLogic;
+            _clienteBusinessLogic = cliente;
         }
 
         [HttpPost]
@@ -145,6 +147,32 @@ namespace IMSA_Solicitud_Service.Controllers
                 {
                     Status = 1,
                     Message = "Error al guardar la oferta",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GuardarCliente ([FromBody] Cliente cliente)
+        {
+            try
+            {
+                var clienteGuardado = await _clienteBusinessLogic.GuardarCliente(cliente);
+                var result = new ApiResponse<Cliente>
+                {
+                    Status = 0,
+                    Message = "Se guardó el cliente correctamente",
+                    Response = clienteGuardado
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al guardar el cliente",
                     Response = ex.Message
                 };
                 return StatusCode(500, error);

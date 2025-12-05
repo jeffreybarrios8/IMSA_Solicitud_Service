@@ -10,6 +10,12 @@ namespace Imsa.Solicitud.BusinessLogic
         {
             this.clienteDataAccess = clienteDataAccess;
         }
+
+        public async Task<Model.Cliente> GuardarCliente(Model.Cliente cliente)
+        {
+            return await clienteDataAccess.GuardarCliente(cliente);
+        }
+
         public IEnumerable<Model.Cliente> obtenerClientes()
         {
             return clienteDataAccess.ObtenerClientes();
