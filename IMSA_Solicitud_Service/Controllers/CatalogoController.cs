@@ -13,11 +13,13 @@ namespace IMSA_Solicitud_Service.Controllers
 
         private readonly ICliente _clienteBusinessLogic;
         private readonly IProducto _productoBusinessLogic;
+        private readonly ISolicitud _solicitudBusinessLogic;
 
-        public CatalogoController(ICliente clienteBusinessLogic, IProducto productoBusinessLogic)
+        public CatalogoController(ICliente clienteBusinessLogic, IProducto productoBusinessLogic, ISolicitud solicitudBusinessLogic)
         {
             _clienteBusinessLogic = clienteBusinessLogic;
             _productoBusinessLogic = productoBusinessLogic;
+            _solicitudBusinessLogic = solicitudBusinessLogic;
         }
 
         [HttpGet]
@@ -41,7 +43,7 @@ namespace IMSA_Solicitud_Service.Controllers
                 {
                     Status = 1,
                     Message = "Error al obtener los clientes",
-                    Response = ex.Message  
+                    Response = ex.Message
                 };
 
                 return StatusCode(500, error);
@@ -74,5 +76,57 @@ namespace IMSA_Solicitud_Service.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Analistas()
+        {
+            try
+            {
+                var analistas = await _solicitudBusinessLogic.ObtenerAnalistas();
+                var result = new ApiResponse<IEnumerable<Analista>>
+                {
+                    Status = 0,
+                    Message = "Analistas obtenidos correctamente",
+                    Response = analistas
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al obtener los analistas",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Proveedores()
+        {
+            try
+            {
+                var proveedores = await _solicitudBusinessLogic.ObtenerProveedores();
+                var result = new ApiResponse<IEnumerable<Proveedor>>
+                {
+                    Status = 0,
+                    Message = "Proveedores obtenidos correctamente",
+                    Response = proveedores
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al obtener los proveedores",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
     }
 }

@@ -35,9 +35,19 @@ namespace Imsa.Solicitud.BusinessLogic
             return solicitudDataAccess.GuardarSolicitud(solicitud);
         }
 
+        public async Task<IEnumerable<Analista>> ObtenerAnalistas()
+        {
+            return await solicitudDataAccess.ObtenerAnalistas();
+        }
+
         public async Task<string?> ObtenerFolio()
         {
             return await solicitudDataAccess.ObtenerFolio();
+        }
+
+        public async Task<IEnumerable<Proveedor>> ObtenerProveedores()
+        {
+            return await solicitudDataAccess.ObtenerProveedores();
         }
 
         public async Task<IEnumerable<Model.Solicitud>> ObtenerSolicitudes()

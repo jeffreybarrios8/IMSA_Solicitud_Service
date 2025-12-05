@@ -77,6 +77,14 @@ namespace Imsa.Solicitud.DataAccess
                 commandType: System.Data.CommandType.StoredProcedure);
         }
 
+        public async Task<IEnumerable<Analista>> ObtenerAnalistas()
+        {
+            var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.QueryAsync<Analista>(
+                "usp_Analista_Listar",
+                commandType: System.Data.CommandType.StoredProcedure);
+        }
+
         public async Task<IEnumerable<DetalleSolicitud>> ObtenerDetalleSolicitudPorId(int idSolicitud)
         {
             var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
@@ -92,6 +100,14 @@ namespace Imsa.Solicitud.DataAccess
             var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
             return await connection.ExecuteScalarAsync<string>(
                 "GenerarFolio",
+                commandType: System.Data.CommandType.StoredProcedure);
+        }
+
+        public async Task<IEnumerable<Proveedor>> ObtenerProveedores()
+        {
+            var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.QueryAsync<Proveedor>(
+                "usp_Proveedor_Listar",
                 commandType: System.Data.CommandType.StoredProcedure);
         }
 

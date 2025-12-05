@@ -14,5 +14,8 @@ namespace Imsa.Solicitud.DataAccess.Interface
         Task<IEnumerable<Model.Solicitud>> ObtenerSolicitudes();
         Task<IEnumerable<Model.DetalleSolicitud>> ObtenerDetalleSolicitudPorId(int idSolicitud);
         Task<Model.Oferta> GuardarOferta(Model.Oferta oferta);
+        Task<IEnumerable<Model.Analista>> ObtenerAnalistas();
+        Task<IEnumerable<Model.Proveedor>> ObtenerProveedores();
+
     }
 }

@@ -13,6 +13,8 @@ namespace Imsa.Solicitud.BusinessLogic.Interface
         Task<Model.DetalleSolicitud?> GuardarDetalleSolicitud(Model.DetalleSolicitud detalleSolicitud);
         Task<IEnumerable<Model.Solicitud>> ObtenerSolicitudes();
         Task<Model.Oferta> GuardarOferta(Model.Oferta oferta);
+        Task<IEnumerable<Model.Analista>> ObtenerAnalistas();
+        Task<IEnumerable<Model.Proveedor>> ObtenerProveedores();
 
 
     }
