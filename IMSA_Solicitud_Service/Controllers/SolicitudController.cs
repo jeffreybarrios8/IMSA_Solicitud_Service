@@ -179,6 +179,32 @@ namespace IMSA_Solicitud_Service.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GuardarAnalista([FromBody] Analista analista)
+        {
+            try
+            {
+                var analistaGuardado = await _solicitudBusinessLogic.GuardarAnalista(analista);
+                var result = new ApiResponse<Analista>
+                {
+                    Status = 0,
+                    Message = "Se guardó el analista correctamente",
+                    Response = analistaGuardado
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al guardar el analista",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
+
     }
 
 }

@@ -18,6 +18,26 @@ namespace Imsa.Solicitud.DataAccess
             this.connectionManager = connectionManager;
         }
 
+        public async Task<Analista?> GuardarAnalista(Analista analista)
+        {
+            using var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.QueryFirstOrDefaultAsync<Analista>(
+                "usp_Analista_Guardar",
+                new
+                {
+                    analista.IdAnalista,
+                    analista.PrimerNombre,
+                    analista.SegundoNombre,
+                    analista.PrimerApellido,
+                    analista.SegundoApellido,
+                    analista.Correo,
+                    analista.Telefono,
+                    analista.UsuarioCreacion,
+                    analista.IdEstado
+                },
+                commandType: System.Data.CommandType.StoredProcedure);
+        }
+
         public async Task<DetalleSolicitud?> GuardarDetalleSolicitud(DetalleSolicitud detalleSolicitud)
         {
             using var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);

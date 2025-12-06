@@ -16,6 +16,7 @@ namespace Imsa.Solicitud.DataAccess.Interface
         Task<Model.Oferta> GuardarOferta(Model.Oferta oferta);
         Task<IEnumerable<Model.Analista>> ObtenerAnalistas();
         Task<IEnumerable<Model.Proveedor>> ObtenerProveedores();
+        Task<Model.Analista?> GuardarAnalista(Model.Analista analista);
 
     }
 }

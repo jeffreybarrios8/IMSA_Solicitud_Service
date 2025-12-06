@@ -18,6 +18,11 @@ namespace Imsa.Solicitud.BusinessLogic
             this.solicitudDataAccess = solicitudDataAccess;
         }
 
+        public async Task<Analista?> GuardarAnalista(Analista analista)
+        {
+            return await solicitudDataAccess.GuardarAnalista(analista);
+        }
+
         public async Task<DetalleSolicitud?> GuardarDetalleSolicitud(DetalleSolicitud detalleSolicitud)
         {
             return await solicitudDataAccess.GuardarDetalleSolicitud(detalleSolicitud);
