@@ -205,6 +205,32 @@ namespace IMSA_Solicitud_Service.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GuardarProveedor([FromBody] Proveedor proveedor)
+        {
+            try
+            {
+                var proveedorGuardado = await _solicitudBusinessLogic.GuardarProveedor(proveedor);
+                var result = new ApiResponse<Proveedor>
+                {
+                    Status = 0,
+                    Message = "Se guardó el proveedor correctamente",
+                    Response = proveedorGuardado
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al guardar el proveedor",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
+
     }
 
 }

@@ -16,6 +16,7 @@ namespace Imsa.Solicitud.BusinessLogic.Interface
         Task<IEnumerable<Model.Analista>> ObtenerAnalistas();
         Task<IEnumerable<Model.Proveedor>> ObtenerProveedores();
         Task<Model.Analista?> GuardarAnalista(Model.Analista analista);
+        Task<Model.Proveedor?> GuardarProveedor(Model.Proveedor proveedor);
 
 
 

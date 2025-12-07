@@ -74,6 +74,29 @@ namespace Imsa.Solicitud.DataAccess
                 commandType: System.Data.CommandType.StoredProcedure);
         }
 
+        public async Task<Proveedor?> GuardarProveedor(Proveedor proveedor)
+        {
+           var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.QueryFirstOrDefaultAsync<Proveedor>(
+                "usp_Proveedor_Guardar",
+                new
+                {
+                    proveedor.IdProveedor,
+                    proveedor.Codigo,
+                    proveedor.Responsable,
+                    proveedor.Telefono,
+                    proveedor.Origen,
+                    proveedor.Correo,
+                    proveedor.Limite,
+                    proveedor.UsuarioCreacion,  
+                    proveedor.Dias,
+                    proveedor.IdEstado,
+                    proveedor.IdMoneda,
+                    proveedor.NombreProveedor
+                },
+                commandType: System.Data.CommandType.StoredProcedure);
+        }
+
         public async Task<Model.Solicitud?> GuardarSolicitud(Model.Solicitud solicitud)
         {
             using var connection =  connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);

@@ -33,6 +33,11 @@ namespace Imsa.Solicitud.BusinessLogic
            return await solicitudDataAccess.GuardarOferta(oferta);
         }
 
+        public async Task<Proveedor?> GuardarProveedor(Proveedor proveedor)
+        {
+            return await solicitudDataAccess.GuardarProveedor(proveedor);
+        }
+
         public Task<Model.Solicitud?> GuardarSolicitud(Model.Solicitud solicitud)
         {
             ArgumentNullException.ThrowIfNull(solicitud);

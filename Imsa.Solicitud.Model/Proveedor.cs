@@ -12,7 +12,7 @@ namespace Imsa.Solicitud.Model
         public DateTime FechaCreacion { get; set; }
         public string UsuarioCreacion { get; set; }
         public DateTime? FechaModificacion { get; set; }
-        public string UsuarioModficacion { get; set; }
+        public string? UsuarioModficacion { get; set; }
 
         public string Codigo { get; set; }
         public string Responsable { get; set; }
@@ -21,8 +21,9 @@ namespace Imsa.Solicitud.Model
         public string Correo { get; set; }
         public int? Limite { get; set; }
         public int? Dias { get; set; }
-        public string NombreProveedor { get; set; }
+        public string? NombreProveedor { get; set; }
         public int IdEstado { get; set; }
         public int IdMoneda { get; set; }
+        public string? NombreMoneda { get; set; }
     }
 }
