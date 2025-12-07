@@ -17,7 +17,7 @@ namespace Imsa.Solicitud.Model
         public string Codigo { get; set; }
         public string Responsable { get; set; }
         public string Telefono { get; set; }
-        public string Origen { get; set; }
+        public string? Origen { get; set; }
         public string Correo { get; set; }
         public int? Limite { get; set; }
         public int? Dias { get; set; }
