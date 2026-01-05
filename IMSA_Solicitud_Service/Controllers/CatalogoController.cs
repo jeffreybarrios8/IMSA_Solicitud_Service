@@ -1,13 +1,17 @@
 ﻿using Imsa.Solicitud.BusinessLogic.Interface;
 using Imsa.Solicitud.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace IMSA_Solicitud_Service.Controllers
 {
     [Route("api/[controller]/[Action]")]
+    [Authorize]
     [ApiController]
+
     public class CatalogoController : ControllerBase
     {
 

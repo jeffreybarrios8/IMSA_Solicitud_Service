@@ -1,10 +1,12 @@
 ﻿using Imsa.Solicitud.BusinessLogic.Interface;
 using Imsa.Solicitud.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IMSA_Solicitud_Service.Controllers
 {
     [Route("api/[controller]/[Action]")]
+    [Authorize]
     [ApiController]
     public class SolicitudController : ControllerBase
     {
