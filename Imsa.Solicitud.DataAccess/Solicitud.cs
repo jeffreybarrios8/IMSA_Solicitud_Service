@@ -45,6 +45,7 @@ namespace Imsa.Solicitud.DataAccess
                 "usp_DetalleSolicitud_Guardar",
                 new
                 {
+                    detalleSolicitud.IdDetalleSolicitud,
                     detalleSolicitud.DescripcionProducto,
                     detalleSolicitud.UnidadMedida,
                     detalleSolicitud.CantidadRequerida,
