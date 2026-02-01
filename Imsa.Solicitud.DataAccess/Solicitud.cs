@@ -106,6 +106,7 @@ namespace Imsa.Solicitud.DataAccess
                 "usp_Solicitud_Guardar",
                 new
                 {
+                    solicitud.IdSolicitud,
                     solicitud.NoScSolicitante,
                     solicitud.NombreSolicitante,
                     solicitud.NoFolio,
