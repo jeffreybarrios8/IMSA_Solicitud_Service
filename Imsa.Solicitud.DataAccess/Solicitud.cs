@@ -50,7 +50,8 @@ namespace Imsa.Solicitud.DataAccess
                     detalleSolicitud.UnidadMedida,
                     detalleSolicitud.CantidadRequerida,
                     detalleSolicitud.PrecioUnitario,
-                    detalleSolicitud.IdSolicitud
+                    detalleSolicitud.IdSolicitud,
+                    detalleSolicitud.Accion
                 },
                 commandType: System.Data.CommandType.StoredProcedure);
         }

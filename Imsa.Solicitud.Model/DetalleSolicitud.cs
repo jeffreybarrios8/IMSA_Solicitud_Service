@@ -14,7 +14,7 @@ namespace Imsa.Solicitud.Model
 
         public string UnidadMedida { get; set; } = string.Empty;
 
-        public int CantidadRequerida { get; set; }
+        public decimal CantidadRequerida { get; set; }
 
         public decimal PrecioUnitario { get; set; }
 
@@ -24,5 +24,6 @@ namespace Imsa.Solicitud.Model
         {
             get; set;
         }
+        public string Accion { get; set; }
     }
 }
