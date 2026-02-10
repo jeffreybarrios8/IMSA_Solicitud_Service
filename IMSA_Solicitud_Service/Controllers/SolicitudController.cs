@@ -156,7 +156,7 @@ namespace IMSA_Solicitud_Service.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GuardarCliente ([FromBody] Cliente cliente)
+        public async Task<IActionResult> GuardarCliente([FromBody] Cliente cliente)
         {
             try
             {
@@ -233,6 +233,33 @@ namespace IMSA_Solicitud_Service.Controllers
             }
         }
 
-    }
+        [HttpPost]
+        public async Task<IActionResult> FinalizarSolicitud([FromBody] RequestFinalizarSolicitud requestFinalizar)
+        {
+            try
+            {
+                var resultado = await _solicitudBusinessLogic.FinalizarSolicitud(requestFinalizar);
+                var result = new ApiResponse<bool>
+                {
+                    Status = 0,
+                    Message = "Se finalizó la solicitud correctamente",
+                    Response = resultado
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al finalizar la solicitud",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
 
+        }
+
+    }
 }
+    

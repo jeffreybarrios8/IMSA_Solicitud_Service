@@ -18,6 +18,7 @@ namespace Imsa.Solicitud.DataAccess.Interface
         Task<IEnumerable<Model.Proveedor>> ObtenerProveedores();
         Task<Model.Analista?> GuardarAnalista(Model.Analista analista);
         Task<Model.Proveedor?> GuardarProveedor(Model.Proveedor proveedor);
+        Task<bool> FinalizarSolicitud(Model.RequestFinalizarSolicitud requestFinalizar);
 
     }
 }

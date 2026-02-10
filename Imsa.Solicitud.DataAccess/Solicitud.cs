@@ -18,6 +18,19 @@ namespace Imsa.Solicitud.DataAccess
             this.connectionManager = connectionManager;
         }
 
+        public async Task<bool> FinalizarSolicitud(RequestFinalizarSolicitud requestFinalizar)
+        {
+            using var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.ExecuteAsync(
+                "usp_FinalizarSolicitud",
+                new
+                {
+                    requestFinalizar.IdSolicitudOriginal,
+                    requestFinalizar.UsuarioAccion
+                },
+                commandType: System.Data.CommandType.StoredProcedure) > 0;
+        }
+
         public async Task<Analista?> GuardarAnalista(Analista analista)
         {
             using var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
