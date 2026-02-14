@@ -162,6 +162,15 @@ namespace Imsa.Solicitud.DataAccess
                 commandType: System.Data.CommandType.StoredProcedure);
         }
 
+        public async Task<IEnumerable<Oferta>> ObtenerOfertaPorIdSolicitud(int idSolicitud)
+        {
+            var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.QueryAsync<Model.Oferta>(
+                "[usp_Oferta_ListarPorSolicitud]",
+                new { IdSolicitud = idSolicitud },
+                commandType: System.Data.CommandType.StoredProcedure);
+        }
+
         public async Task<IEnumerable<Proveedor>> ObtenerProveedores()
         {
             var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
@@ -175,6 +184,15 @@ namespace Imsa.Solicitud.DataAccess
             var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
             return await connection.QueryAsync<Model.Solicitud>(
                 "usp_Solicitud_Listar",
+                commandType: System.Data.CommandType.StoredProcedure);
+        }
+
+        public async Task<Model.Solicitud?> ObtenerSolicitudPorId(int idSolicitud)
+        {
+           var connection = connectionManager.GetConnection(ConnectionManager.CONNECTION_STRING_NAME);
+            return await connection.QueryFirstOrDefaultAsync<Model.Solicitud>(
+                "usp_Solicitud_ListarPorId",
+                new { IdSolicitud = idSolicitud },
                 commandType: System.Data.CommandType.StoredProcedure);
         }
     }

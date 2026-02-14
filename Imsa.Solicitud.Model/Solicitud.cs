@@ -27,6 +27,8 @@ namespace Imsa.Solicitud.Model
         public IEnumerable<DetalleSolicitud> DetalleSolicitud { get; set; }
         public string RucCliente { get; set; }
         public string NombreCliente { get; set; }
+        public string? NombreAnalista { get; set; }
+
 
     }
 }

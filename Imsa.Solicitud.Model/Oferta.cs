@@ -30,5 +30,8 @@ namespace Imsa.Solicitud.Model
         public Solicitud? Solicitud { get; set; }
 
         public Producto? Producto { get; set; }
+        public string? DescripcionProducto { get; set; }
+        public string? UnidadMedida { get; set; }
+
     }
 }

@@ -60,6 +60,11 @@ namespace Imsa.Solicitud.BusinessLogic
             return await solicitudDataAccess.ObtenerFolio();
         }
 
+        public async Task<IEnumerable<Oferta>> ObtenerOfertaPorIdSolicitud(int idSolicitud)
+        {
+            return await solicitudDataAccess.ObtenerOfertaPorIdSolicitud(idSolicitud);
+        }
+
         public async Task<IEnumerable<Proveedor>> ObtenerProveedores()
         {
             return await solicitudDataAccess.ObtenerProveedores();
@@ -81,6 +86,11 @@ namespace Imsa.Solicitud.BusinessLogic
                 }
             }
             return solicitudes ?? [];
+        }
+
+        public async Task<Model.Solicitud> ObtenerSolicitudPorId(int idSolicitud)
+        {
+            return await solicitudDataAccess.ObtenerSolicitudPorId(idSolicitud);
         }
     }
 }

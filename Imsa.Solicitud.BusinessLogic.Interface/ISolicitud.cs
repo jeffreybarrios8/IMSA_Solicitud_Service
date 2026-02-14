@@ -18,8 +18,8 @@ namespace Imsa.Solicitud.BusinessLogic.Interface
         Task<Model.Analista?> GuardarAnalista(Model.Analista analista);
         Task<Model.Proveedor?> GuardarProveedor(Model.Proveedor proveedor);
         Task<bool> FinalizarSolicitud(Model.RequestFinalizarSolicitud requestFinalizar);
+        Task<Model.Solicitud> ObtenerSolicitudPorId(int idSolicitud);
 
-
-
+        Task<IEnumerable<Model.Oferta>> ObtenerOfertaPorIdSolicitud(int idSolicitud);
     }
 }
