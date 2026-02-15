@@ -40,5 +40,32 @@ namespace IMSA_Solicitud_Service.Controllers
 
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Documentos([FromQuery] int idSolicitud)
+        {
+            try
+            {
+                var documentos = await _documentoBusinessLogic.ObtenerDocumentosPorIdSolicitud(idSolicitud);
+                var result = new ApiResponse<IEnumerable<Documento>>
+                {
+                    Status = 0,
+                    Message = "Se obtuvieron los documentos correctamente",
+                    Response = documentos
+                };
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                var error = new ApiResponse<string>
+                {
+                    Status = 1,
+                    Message = "Error al obtener los documentos",
+                    Response = ex.Message
+                };
+                return StatusCode(500, error);
+            }
+        }
     }
+
 }

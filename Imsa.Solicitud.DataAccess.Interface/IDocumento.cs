@@ -9,5 +9,7 @@ namespace Imsa.Solicitud.DataAccess.Interface
     public interface IDocumento
     {
         Task<IEnumerable<Model.Documento>> ObtenerTipoDocumento();
+        Task<Model.Documento> Guardar(Model.Documento documento);
+        Task<IEnumerable<Model.Documento>> ObtenerDocumentosPorIdSolicitud(int idSolicitud);
     }
 }

@@ -9,9 +9,12 @@ namespace Imsa.Solicitud.Model
     public class Documento
     {
         public int IdTipoDocumento { get; set; }
-        public string NombreDocumento { get; set; }
-        public string PlantillaHtml { get; set; }
+        public string? NombreDocumento { get; set; }
+        public string? PlantillaHtml { get; set; }
         public string? Base64 { get; set; }
         public int? Activo { get; set; }
+        public int? IdSolicitud { get; set; }
+        public string? NombreArchivo { get; set; }
+        public string? MimeType { get; set; }
     }
 }

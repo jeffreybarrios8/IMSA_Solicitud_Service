@@ -10,5 +10,8 @@ namespace Imsa.Solicitud.BusinessLogic.Interface
     {
         Task<IEnumerable<Model.Documento>> ObtenerTipoDocumento();
         Task<IEnumerable<Model.Documento>> GenerarDocumento(int IdSolicitud);
+        Task<Model.Documento> Guardar(Model.Documento documento);
+        Task<IEnumerable<Model.Documento>> ObtenerDocumentosPorIdSolicitud(int idSolicitud);
+
     }
 }

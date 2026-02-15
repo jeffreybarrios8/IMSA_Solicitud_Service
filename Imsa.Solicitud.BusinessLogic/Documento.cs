@@ -1,4 +1,6 @@
 ﻿using Imsa.Solicitud.BusinessLogic.Interface;
+using Imsa.Solicitud.DataAccess;
+using SelectPdf;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -41,6 +43,7 @@ namespace Imsa.Solicitud.BusinessLogic
                     {
                         // Inicializamos StringBuilder con la plantilla base de la BD
                         StringBuilder sb = new StringBuilder(documento.PlantillaHtml);
+                        documento.IdSolicitud = IdSolicitud; // Asignamos el IdSolicitud al documento para referencia futura
 
                         // 1. Reemplazo de datos de Cabecera
                         sb.Replace("[IdSolicitud]", solicitud.IdSolicitud.ToString());
@@ -87,7 +90,75 @@ namespace Imsa.Solicitud.BusinessLogic
                     }
                 }
             }
+
+            await GenerarYGuardarOfertaPdf(resultado);
             return resultado;
+        }
+
+        public async Task<bool> GenerarYGuardarOfertaPdf(IEnumerable<Model.Documento> documentos)
+        {
+            try
+            {
+
+
+                foreach (var docInfo in documentos)
+                {
+                   
+                    if (docInfo == null) return false;
+
+                    //Configuración del motor de conversión SelectPdf
+                    HtmlToPdf converter = new HtmlToPdf();
+
+                    // Ajustes para asegurar que no haya desborde en el diseño de 21cm (A4)
+                    converter.Options.PdfPageSize = PdfPageSize.A4;
+                    converter.Options.MarginLeft = 20;
+                    converter.Options.MarginRight = 20;
+                    converter.Options.MarginTop = 20;
+                    converter.Options.MarginBottom = 20;
+
+                    //Conversión de HTML a Objeto PDF
+                    PdfDocument pdfDoc = converter.ConvertHtmlString(docInfo.PlantillaHtml);
+
+                    //Transformación a Base64
+                    string base64File = "";
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pdfDoc.Save(ms);
+                        byte[] pdfBytes = ms.ToArray();
+                        base64File = Convert.ToBase64String(pdfBytes);
+                        pdfDoc.Close(); // Liberación de memoria
+                    }
+
+                    var documentoAGuardar = new Model.Documento
+                    {
+                        Base64 = base64File,
+                        IdSolicitud = docInfo.IdSolicitud,
+                        NombreArchivo = $"{docInfo.NombreDocumento}_{docInfo.IdSolicitud}.pdf",
+                        MimeType = "application/pdf",
+                    };
+
+                    //Guardamos el documento generado en la base de datos
+                    await Guardar(documentoAGuardar);
+
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la cadena de generación de PDF: " + ex.Message);
+            }
+        }
+
+        public async Task<Model.Documento> Guardar(Model.Documento documento)
+        {
+           return await documentoDataAccess.Guardar(documento);
+        }
+
+        public async Task<IEnumerable<Model.Documento>> ObtenerDocumentosPorIdSolicitud(int idSolicitud)
+        {
+           return await documentoDataAccess.ObtenerDocumentosPorIdSolicitud(idSolicitud);
         }
     }
 }
