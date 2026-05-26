@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularDev",
         policy => policy
-            .WithOrigins("http://imsafrontend-001-site1.ktempurl.com", "http://localhost:4200") // Angular dev server
+            .WithOrigins("http://imsa03-001-site1.site4future.com", "http://localhost:4200") // Angular dev server
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
